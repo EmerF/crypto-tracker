@@ -63,3 +63,11 @@ Getting From Database:
 ```bash
   curl http://localhost:8080/coins/btc
 ```
+
+Inspect Volume Logs:
+```bash
+docker volume inspect cryptotracker_app_logs
+```
+
+Busca no Splunk(http://localhost:8000/en-US/app/search/search):
+index=main sourcetype=_json

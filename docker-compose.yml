@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   postgres:
     image: postgres:13
@@ -24,6 +25,44 @@ services:
     volumes:
       - postgres_test_data:/var/lib/postgresql/data
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto_tracker_app
+    depends_on:
+      - postgres
+      - splunk
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/crypto_tracker_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: crypto_pass
+      SPRING_PROFILES_ACTIVE: prod
+      LOGGING_FILE_PATH: /logs/app.log
+      SPLUNK_HEC_TOKEN: dev-hec-token
+    volumes:
+      - app_logs:/logs
+    restart: always
+
+  splunk:
+    image: splunk/splunk:latest
+    container_name: splunk
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=splunk_crytpo
+      - SPLUNK_HEC_TOKEN=dev-hec-token
+      - SPLUNK_HEC_ENABLE=true
+    ports:
+      - "8000:8000"
+      - "8088:8088"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    restart: always
+
 volumes:
   postgres_data:
   postgres_test_data:
+  app_logs:
+  splunk_data:

@@ -1,0 +1,17 @@
+<configuration>
+    <appender name="splunk" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <url>http://splunk:8088</url>  <!-- Changed to http since Splunk is in the same Docker network -->
+        <token>dev-hec-token</token>
+        <source>java-app</source>
+        <sourcetype>_json</sourcetype>
+        <index>main</index>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="splunk"/>
+    </root>
+</configuration>
