@@ -23,16 +23,43 @@ This is a **Crypto Tracker** application built as part of my portfolio project. 
 
 ### Clone the Repository
 First, clone the repository to your local machine:
-```bash
-git clone https://github.com/your-username/crypto-tracker.git ```
+git clone https://github.com/EmerF/crypto-tracker.git
 
 
-## Prerequisites
+### Prerequisites
 Make sure you have the following installed:
-
-bash
-Copy
-Edit
-- Java 17 (or the version used for your project)
+- Java 17+
 - Maven (for managing dependencies and building the project)
-- Docker (if using Docker for the database or containerization)
+- Docker
+
+### Build and Run the Application
+Create the database using docker-compose.yml:
+```bash
+  docker-compose down -v # clean older installations
+  docker-compose up -d
+```
+
+Navigate to the project directory:
+
+```bash
+  cd crypto-tracker
+```
+
+Build the project with Maven:
+```bash
+  mvn clean install
+```
+Run the application:
+```bash
+  mvn spring-boot:run
+```
+Testing:
+##### ** Fetch data from api and save to database. Uses cache, saving only on first execution **
+```bash
+  curl http://localhost:8080/coins/fetch/btc
+```
+Getting From Database:
+##### ** Get data from Postgres **
+```bash
+  curl http://localhost:8080/coins/btc
+```
