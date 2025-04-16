@@ -60,7 +60,7 @@ services:
       - "8088:8088"
     volumes:
       - splunk_data:/opt/splunk/var
-        - ./splunk_config/indexes.conf:/opt/splunk/etc/system/local/indexes.conf
+      - ./splunk_config/indexes.conf:/opt/splunk/etc/system/local/indexes.conf
     restart: always
 
 volumes:
