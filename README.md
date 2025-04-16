@@ -29,14 +29,15 @@ Make sure you have the following installed:
 - Maven (for managing dependencies and building the project)
 - Docker
 
-### Build and Run the Application
-Create the database using docker-compose.yml:
+### Build Using Docker compose
+Creating app with all resources:
 ```bash
   docker-compose down -v # clean older installations
   docker-compose up -d
 ```
 
-Navigate to the project directory:
+### Build and Run the Application
+Navigate to the project directory(Start Postgres and Splunk):
 
 ```bash
   cd crypto-tracker
@@ -63,7 +64,7 @@ Getting From Database:
 
 Inspect Volume Logs:
 ```bash
-docker volume inspect cryptotracker_app_logs
+  docker volume inspect cryptotracker_app_logs
 ```
 
 #### Splunk Search(http://localhost:8000/en-US/app/search/search):

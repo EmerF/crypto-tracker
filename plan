@@ -1,0 +1,13 @@
+project structure:
+├── app/ (Java project)
+├── infra/ (Terraform files)
+│   └── main.tf
+│   └── eks.tf
+│   └── vpc.tf
+├── k8s/ (Kubernetes manifests)
+│   └── deployment.yaml
+│   └── service.yaml
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│       └── cd.yml
