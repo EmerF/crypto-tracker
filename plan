@@ -11,3 +11,7 @@ project structure:
 │   └── workflows/
 │       └── ci.yml
 │       └── cd.yml
+
+** Próximas features:
+- add threads para buscar dados
+- salvar no s3 e consultar via iceberg/glue

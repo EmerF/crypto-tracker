@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-tracker
+  namespace: cryptotracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crypto-tracker
+  template:
+    metadata:
+      labels:
+        app: crypto-tracker
+    spec:
+      containers:
+        - name: crypto-tracker
+          image: your-dockerhub-user/crypto-tracker:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: crypto-config
+            - secretRef:
+                name: crypto-secrets
+          volumeMounts:
+            - name: logs
+              mountPath: /logs
+      volumes:
+        - name: logs
+          emptyDir: {}

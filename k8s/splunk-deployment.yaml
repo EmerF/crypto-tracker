@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk
+  namespace: cryptotracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunk
+  template:
+    metadata:
+      labels:
+        app: splunk
+    spec:
+      containers:
+        - name: splunk
+          image: splunk/splunk:latest
+          ports:
+            - containerPort: 8000
+            - containerPort: 8088
+          env:
+            - name: SPLUNK_START_ARGS
+              value: "--accept-license"
+            - name: SPLUNK_PASSWORD
+              value: "splunk_crytpo"
+            - name: SPLUNK_HEC_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: crypto-secrets
+                  key: SPLUNK_HEC_TOKEN
+            - name: SPLUNK_HEC_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: crypto-config
+                  key: SPLUNK_HEC_ENABLE
+            - name: SPLUNK_HEC_SSL
+              valueFrom:
+                configMapKeyRef:
+                  name: crypto-config
+                  key: SPLUNK_HEC_SSL
+          volumeMounts:
+            - name: splunk-storage
+              mountPath: /opt/splunk/var
+      volumes:
+        - name: splunk-storage
+          emptyDir: {}
