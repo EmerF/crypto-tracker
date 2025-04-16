@@ -46,7 +46,6 @@ public class CoinController {
     // Fetch coin from external API (CoinGecko) and return it asynchronously
     @GetMapping("/fetch/{symbol}")
     public Mono<Coin> fetchCoinFromExternalApi(@PathVariable String symbol) {
-        System.out.println("Logger started controller fetch..");
         logger.info("Get data from api for coin: {}", symbol);
         return coinGeckoService.fetchCoinData(symbol);
     }

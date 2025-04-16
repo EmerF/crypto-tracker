@@ -42,7 +42,6 @@ public class CoinGeckoService {
     @Cacheable(value = "coinData", key = "#symbol")
     public Mono<Coin> fetchCoinData(String symbol) {
         String coinId = SYMBOL_TO_ID.getOrDefault(symbol.toLowerCase(), symbol.toLowerCase());
-        System.out.println("Logger started..");
         logger.info("Fetching data for symbol: {} resolved to ID: {}", symbol, coinId);
 
         return webClient.get()

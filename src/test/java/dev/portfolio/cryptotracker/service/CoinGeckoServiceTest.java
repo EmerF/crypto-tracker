@@ -11,6 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -43,6 +45,8 @@ class CoinGeckoServiceTest {
 
     private CoinGeckoService coinGeckoService;
 
+    private static final Logger logger = LoggerFactory.getLogger(CoinGeckoServiceTest.class);
+
     @BeforeEach
     void setup() {
         Mockito.when(webClientBuilder.baseUrl(Mockito.anyString())).thenReturn(webClientBuilder);
@@ -54,7 +58,7 @@ class CoinGeckoServiceTest {
     @Test
     void fetchCoinData_shouldReturnMockedCoin() {
         String symbol = "btc";
-
+        logger.info("Logger test {}", symbol);
         CoinGeckoMarketChartResponse mockResponse = new CoinGeckoMarketChartResponse();
         mockResponse.setPrices(List.of(
                 List.of(1712707200000.0, 50000.0),
