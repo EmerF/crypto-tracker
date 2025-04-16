@@ -28,6 +28,11 @@ jobs:
       - name: 🧪 Build with Maven
         run: mvn clean package -DskipTests
 
+      - name: 🐳 Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
       - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -35,6 +40,6 @@ jobs:
         run: |
           docker-compose up -d
           echo "⏳ Waiting for app to start..."
-          sleep 20
-          curl http://localhost:8080/coins/fetch/ada
+          sleep 50
+          curl --fail http://localhost:8080/coins/fetch/ada || exit 1
           docker-compose down -v
