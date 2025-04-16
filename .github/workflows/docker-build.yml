@@ -1,10 +1,12 @@
-name: Build and Test Java App with Docker
+name: Build, Test, and Push to Docker Hub
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - deploy
   pull_request:
-    branches: [ master ]
+    branches:
+      - deploy
 
 jobs:
   build-test:
@@ -43,3 +45,10 @@ jobs:
           sleep 50
           curl --fail http://localhost:8080/coins/fetch/ada || exit 1
           docker-compose down -v
+
+      # Passo de Build e Push para o Docker Hub usando o token
+      - name: 🐳 Build and Push Docker Image to Docker Hub
+        run: |
+          docker build -t emerfonseca/crypto-tracker:latest .
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login --username emerfonseca --password-stdin
+          docker push emerfonseca/crypto-tracker:latest
