@@ -49,6 +49,6 @@ jobs:
       # Passo de Build e Push para o Docker Hub usando o token
       - name: 🐳 Build and Push Docker Image to Docker Hub
         run: |
-          docker build -t your-dockerhub-user/crypto-tracker:latest .
-          echo ${{ secrets.DOCKER_TOKEN }} | docker login --username your-dockerhub-user --password-stdin
-          docker push your-dockerhub-user/crypto-tracker:latest
+          docker build -t emerfonseca/crypto-tracker:latest .
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login --username emerfonseca --password-stdin
+          docker push emerfonseca/crypto-tracker:latest
