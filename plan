@@ -15,6 +15,7 @@ project structure:
 
 ** Próximas features:
 - deploy na aws
+    - config chaves aws
 - add prometheus e grafana
 - falar sobre cache
 - add threads para buscar dados
