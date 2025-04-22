@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - infra_terraform
-
     paths:
       - 'infra/**'
+defaults:
+  run:
+    working-directory: infra
+
 
 jobs:
   create-eks-cluster:
@@ -15,7 +18,7 @@ jobs:
       run:
         shell: bash
 
-    permissions: # <<== This is required for OIDC to work!
+    permissions:
       id-token: write
       contents: read
 
