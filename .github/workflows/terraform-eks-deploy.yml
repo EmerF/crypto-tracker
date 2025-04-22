@@ -6,7 +6,7 @@ on:
       - infra_terraform
 
     paths:
-        - 'infra/**'
+      - 'infra/**'
 
 jobs:
   create-eks-cluster:
