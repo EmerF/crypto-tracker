@@ -31,8 +31,10 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: 'infra/**'
+
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: 'infra/**'
+        run: terraform apply -auto-approve -input=false
