@@ -10,7 +10,6 @@ defaults:
   run:
     working-directory: infra
 
-
 jobs:
   create-eks-cluster:
     runs-on: ubuntu-latest
