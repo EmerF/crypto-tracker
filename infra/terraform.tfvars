@@ -1,4 +1,4 @@
-region               = "us-west-2"
+region               = "us-east-1"
 cluster_name         = "cryptotracker-cluster"
 vpc_cidr             = "10.0.0.0/16"
 public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
@@ -7,4 +7,4 @@ node_instance_type   = "t3.micro"
 desired_capacity     = 1
 max_capacity         = 1
 min_capacity         = 1
-azs                  = ["us-west-2a", "us-west-2b"]
+azs                  = ["us-east-1a", "us-east-1b"]

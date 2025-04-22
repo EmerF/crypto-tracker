@@ -6,9 +6,7 @@ on:
       - infra_terraform
     paths:
       - 'infra/**'
-defaults:
-  run:
-    working-directory: infra
+
 
 jobs:
   create-eks-cluster:
@@ -16,6 +14,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./infra
 
     permissions:
       id-token: write
