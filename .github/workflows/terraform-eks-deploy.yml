@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - infra_terraform
+
     paths:
         - 'infra/**'
 
