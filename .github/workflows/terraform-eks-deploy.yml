@@ -39,7 +39,8 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan -input=false
-        working-directory: ./infra/eks
+        with:
+          working-directory: ./infra/eks
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
