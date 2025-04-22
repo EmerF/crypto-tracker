@@ -6,6 +6,7 @@ on:
       - infra_terraform
     paths:
       - 'infra/**'
+      
 defaults:
   run:
     working-directory: infra
