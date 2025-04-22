@@ -9,6 +9,10 @@ jobs:
   create-eks-cluster:
     runs-on: ubuntu-latest
 
+    permissions: # <<== This is required for OIDC to work!
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
