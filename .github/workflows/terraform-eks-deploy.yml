@@ -10,7 +10,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./infra/eks
+        working-directory: ./infra
 
     permissions:
       id-token: write
@@ -39,8 +39,6 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan -input=false
-        with:
-          working-directory: ./infra/eks
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
