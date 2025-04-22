@@ -67,8 +67,41 @@ Inspect Volume Logs:
   docker volume inspect cryptotracker_app_logs
 ```
 
+#### Splunk Index Config:
+
+#### Go to:  localhost:8000/setings
+
+![Event Collector](images/splunk_settings.png)
+
+#### HTTP Event Collector
+
+![Settings](images/splunk_event.png)
+
+#### Add Idexes
+
+![Creating Splunk Index](images/add_splunk_index.png)
+
 #### Splunk Search(http://localhost:8000/en-US/app/search/search):
 
 type in search menu:
 
 index=main
+
+#### Creating local Cluster(Need Kind)
+
+kind create cluster --name crypto
+
+
+#### Installing App in Cluster
+          kubectl apply -f k8s/namespace.yaml
+          kubectl apply -f k8s/app-deployment.yaml
+          kubectl apply -f k8s/app-service.yaml
+          kubectl apply -f k8s/configmap.yaml
+          kubectl apply -f k8s/postgres-deployment.yaml
+          kubectl apply -f k8s/postgres-service.yaml
+          kubectl apply -f k8s/secrets.yaml
+          kubectl apply -f k8s/splunk-deployment.yaml
+          kubectl apply -f k8s/splunk-service.yaml
+
+#### Port Forward
+kubectl port-forward crypto-tracker-6d78796d44-9slc7 8080:8080

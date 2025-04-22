@@ -7,7 +7,9 @@ spec:
   selector:
     app: splunk
   ports:
-    - port: 8000
+    - name: app-port
+      port: 8000
       targetPort: 8000
-    - port: 8088
+    - name: adm-port
+      port: 8088
       targetPort: 8088
