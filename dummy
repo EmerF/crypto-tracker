@@ -1,0 +1,10 @@
+add to project:
+    - threads:
+        - async data search in 2 different api
+        - unite the data of 2 different sources
+    - messages:
+        - conect to local kafka
+    - tests:
+        - integration tests
+    - polimorfirsm using:
+        inter

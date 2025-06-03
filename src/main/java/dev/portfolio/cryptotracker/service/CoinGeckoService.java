@@ -17,7 +17,9 @@ import org.slf4j.LoggerFactory;
 @Service
 public class CoinGeckoService {
 
+    
     private static final Logger logger = LoggerFactory.getLogger(CoinGeckoService.class);
+    private static final String apiUrl= "https://api.coingecko.com/api/v3";
 
     private final WebClient webClient;
     private final CoinRepository coinRepository;
@@ -35,7 +37,7 @@ public class CoinGeckoService {
 
     @Autowired
     public CoinGeckoService(WebClient.Builder webClientBuilder, CoinRepository coinRepository) {
-        this.webClient = webClientBuilder.baseUrl("https://api.coingecko.com/api/v3").build();
+        this.webClient = webClientBuilder.baseUrl(apiUrl).build();
         this.coinRepository = coinRepository;
     }
 

@@ -1,6 +1,5 @@
 package dev.portfolio.cryptotracker.service;
 
-import dev.portfolio.cryptotracker.controller.GlobalExceptionHandler;
 import dev.portfolio.cryptotracker.dto.CoinGeckoMarketChartResponse;
 import dev.portfolio.cryptotracker.exception.NoDataFoundException;
 import dev.portfolio.cryptotracker.model.Coin;
