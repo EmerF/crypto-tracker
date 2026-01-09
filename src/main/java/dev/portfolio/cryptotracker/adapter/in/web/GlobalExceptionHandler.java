@@ -1,6 +1,6 @@
-package dev.portfolio.cryptotracker.controller;
+package dev.portfolio.cryptotracker.adapter.in.web;
 
-import dev.portfolio.cryptotracker.exception.NoDataFoundException;
+import dev.portfolio.cryptotracker.domain.model.exception.NoDataFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package dev.portfolio.cryptotracker.dto;
+package dev.portfolio.cryptotracker.application.service.dto;
 
 import lombok.Data;
 

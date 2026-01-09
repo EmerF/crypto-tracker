@@ -1,8 +1,8 @@
-package dev.portfolio.cryptotracker.controller;
+package dev.portfolio.cryptotracker.adapter.in.web;
 
-import dev.portfolio.cryptotracker.model.Coin;
-import dev.portfolio.cryptotracker.service.CoinGeckoService;
-import dev.portfolio.cryptotracker.service.CoinService;
+import dev.portfolio.cryptotracker.domain.model.Coin;
+import dev.portfolio.cryptotracker.application.service.CoinGeckoService;
+import dev.portfolio.cryptotracker.application.service.CoinService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package dev.portfolio.cryptotracker.model;
+package dev.portfolio.cryptotracker.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

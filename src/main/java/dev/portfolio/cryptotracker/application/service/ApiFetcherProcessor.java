@@ -1,7 +1,7 @@
-package dev.portfolio.cryptotracker.service;
+package dev.portfolio.cryptotracker.application.service;
 
-import dev.portfolio.cryptotracker.interf.CryptoDataFetcher;
-import dev.portfolio.cryptotracker.model.Coin;
+import dev.portfolio.cryptotracker.port.out.CryptoDataFetcher;
+import dev.portfolio.cryptotracker.domain.model.Coin;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

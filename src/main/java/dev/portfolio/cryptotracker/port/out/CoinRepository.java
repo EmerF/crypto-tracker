@@ -1,6 +1,6 @@
-package dev.portfolio.cryptotracker.repository;
+package dev.portfolio.cryptotracker.port.out;
 
-import dev.portfolio.cryptotracker.model.Coin;
+import dev.portfolio.cryptotracker.domain.model.Coin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

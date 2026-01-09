@@ -1,4 +1,4 @@
-package dev.portfolio.cryptotracker.exception;
+package dev.portfolio.cryptotracker.domain.model.exception;
 
 public class NoDataFoundException extends RuntimeException {
     public NoDataFoundException(String message) {

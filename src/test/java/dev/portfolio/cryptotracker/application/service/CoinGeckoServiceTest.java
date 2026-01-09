@@ -1,9 +1,9 @@
-package dev.portfolio.cryptotracker.service;
+package dev.portfolio.cryptotracker.application.service;
 
-import dev.portfolio.cryptotracker.dto.CoinGeckoMarketChartResponse;
-import dev.portfolio.cryptotracker.exception.NoDataFoundException;
-import dev.portfolio.cryptotracker.model.Coin;
-import dev.portfolio.cryptotracker.repository.CoinRepository;
+import dev.portfolio.cryptotracker.application.service.dto.CoinGeckoMarketChartResponse;
+import dev.portfolio.cryptotracker.domain.model.exception.NoDataFoundException;
+import dev.portfolio.cryptotracker.domain.model.Coin;
+import dev.portfolio.cryptotracker.port.out.CoinRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

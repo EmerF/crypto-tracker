@@ -1,12 +1,11 @@
-package dev.portfolio.cryptotracker.impl;
+package dev.portfolio.cryptotracker.adapter.out.coingecko;
 
-import dev.portfolio.cryptotracker.interf.CryptoDataFetcher;
-import dev.portfolio.cryptotracker.model.Coin;
+import dev.portfolio.cryptotracker.port.out.CryptoDataFetcher;
+import dev.portfolio.cryptotracker.domain.model.Coin;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-
+// base stereotype anotation Use for generecu utility classes
 @Component
 @Qualifier("geckoDataFetcher")
 public class GeckoDataFetcher implements CryptoDataFetcher {
