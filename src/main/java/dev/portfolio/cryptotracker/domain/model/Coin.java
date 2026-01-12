@@ -2,10 +2,7 @@ package dev.portfolio.cryptotracker.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Coin {
 
     @Id
@@ -21,4 +19,6 @@ public class Coin {
     private String currentPrice;  // Store the price as a string initially
     private String marketCap;
 
+    public Coin(String symbol, String price) {
+    }
 }

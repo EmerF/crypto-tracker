@@ -2,7 +2,9 @@ package dev.portfolio.cryptotracker.port.out;
 
 import dev.portfolio.cryptotracker.domain.model.Coin;
 
-public interface CryptoDataFetcher {
+import java.util.List;
 
-    Coin fetchData();
+public interface CryptoDataFetcher {
+    String getExchange();                // exchange identifier
+    List<Coin> fetchData() throws Exception;
 }

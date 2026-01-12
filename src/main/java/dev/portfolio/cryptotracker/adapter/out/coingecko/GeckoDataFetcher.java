@@ -5,7 +5,7 @@ import dev.portfolio.cryptotracker.domain.model.Coin;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-// base stereotype anotation Use for generecu utility classes
+// base stereotype anotation Use for generic utility classes
 @Component
 @Qualifier("geckoDataFetcher")
 public class GeckoDataFetcher implements CryptoDataFetcher {
