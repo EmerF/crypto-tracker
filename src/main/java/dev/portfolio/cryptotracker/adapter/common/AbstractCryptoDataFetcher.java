@@ -1,19 +1,19 @@
 package dev.portfolio.cryptotracker.adapter.common;
 
 import dev.portfolio.cryptotracker.domain.model.Coin;
+import dev.portfolio.cryptotracker.port.out.AuthProvider;
 import dev.portfolio.cryptotracker.port.out.CryptoDataFetcher;
-import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractCryptoDataFetcher implements CryptoDataFetcher {
-    protected final RestTemplate rest;
-
-    protected AbstractCryptoDataFetcher(RestTemplate rest) {
-        this.rest = rest;
+    private final AuthProvider authProvider;
+    protected AbstractCryptoDataFetcher(AuthProvider authProvider) { this.authProvider = authProvider; }
+    @Override
+    public final List<Coin> fetchData() {
+        String token = authProvider != null ? authProvider.authenticate().orElse(null) : null;
+        return Collections.singletonList(fetchWithAuth(token));
     }
-
-    protected <T> T get(String url, Class<T> responseType) {
-        return rest.getForObject(url, responseType);
-    }
+    protected abstract Coin fetchWithAuth(String authToken);
 }
