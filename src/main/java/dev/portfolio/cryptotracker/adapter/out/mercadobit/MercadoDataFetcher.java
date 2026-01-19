@@ -1,7 +1,7 @@
 package dev.portfolio.cryptotracker.adapter.out.mercadobit;
 
 import dev.portfolio.cryptotracker.adapter.common.AbstractCryptoDataFetcher;
-import dev.portfolio.cryptotracker.port.out.CryptoDataFetcher;
+import dev.portfolio.cryptotracker.port.out.AuthProvider;
 import dev.portfolio.cryptotracker.domain.model.Coin;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 @Component
 @Qualifier("mercadoDataFetcher")
 public class MercadoDataFetcher extends AbstractCryptoDataFetcher {
-    public MercadoDataFetcher(RestTemplate rest) {
-        super(rest);
+    private final RestTemplate rest;
+    private static final String TICKERS_URL = "https://www.mercadobitcoin.net/api/v4/tickers";
+
+    public MercadoDataFetcher(AuthProvider authProvider, RestTemplate rest) {
+        super(authProvider);
+        this.rest = rest;
     }
 
     @Override
@@ -24,18 +28,19 @@ public class MercadoDataFetcher extends AbstractCryptoDataFetcher {
     }
 
     @Override
-    public List<Coin> fetchData() {
-        // Example Coinbase endpoint (adjust to actual API shape)
-        MarcadoBasePrice[] resp = get("https://api.coinbase.com/v2/prices/spot?currency=USD", CoinbasePrice[].class);
-        if (resp == null) return List.of();
+    protected List<Coin> fetchWithAuth(String authToken) {
+        // Mercado Bitcoin's public tickers endpoint returns a JSON array of tickers.
+        // We only care about symbol and last price for now.
+        Ticker[] resp = rest.getForObject(TICKERS_URL, Ticker[].class);
+        if (resp == null || resp.length == 0) return List.of();
         return Arrays.stream(resp)
-                .map(p -> new Coin(p.base, p.amount))
+                .map(t -> new Coin(t.symbol, t.last))
                 .collect(Collectors.toList());
     }
 
-    static class MarcadoBasePrice {
-        public String base;
-        public String currency;
-        public String amount;
+    static class Ticker {
+        public String symbol; // e.g. "BTC"
+        public String last;   // last traded price (string in API)
+        // other fields omitted
     }
 }

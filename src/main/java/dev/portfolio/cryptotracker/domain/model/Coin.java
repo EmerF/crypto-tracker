@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -11,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Coin {
+public class Coin  {
 
     @Id
     private String symbol;  // e.g., "BTC", "ETH", etc.
@@ -20,5 +22,7 @@ public class Coin {
     private String marketCap;
 
     public Coin(String symbol, String price) {
+        this.symbol = symbol;
+        this.currentPrice = price;
     }
 }

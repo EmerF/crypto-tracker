@@ -11,9 +11,9 @@ public abstract class AbstractCryptoDataFetcher implements CryptoDataFetcher {
     private final AuthProvider authProvider;
     protected AbstractCryptoDataFetcher(AuthProvider authProvider) { this.authProvider = authProvider; }
     @Override
-    public final List<Coin> fetchData() {
+    public List<Coin> fetchData() {
         String token = authProvider != null ? authProvider.authenticate().orElse(null) : null;
-        return Collections.singletonList(fetchWithAuth(token));
+        return fetchWithAuth(token);
     }
-    protected abstract Coin fetchWithAuth(String authToken);
+    protected abstract List<Coin> fetchWithAuth(String authToken);
 }

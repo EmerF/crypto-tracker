@@ -17,7 +17,7 @@ public class BinanceFetcher extends AbstractCryptoDataFetcher {
         this.rest = rest;
     }
     @Override
-    protected Coin fetchWithAuth(String authToken) {
+    protected List<Coin> fetchWithAuth(String authToken) {
         // call Binance API and map to Coin
         return null;
     }
