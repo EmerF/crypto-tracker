@@ -59,19 +59,19 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Jakarta Persistence API -->
+<!--		&lt;!&ndash; Jakarta Persistence API &ndash;&gt;
 		<dependency>
 			<groupId>jakarta.persistence</groupId>
 			<artifactId>jakarta.persistence-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
 
-		<!-- Hibernate for Jakarta -->
+		&lt;!&ndash; Hibernate for Jakarta &ndash;&gt;
 		<dependency>
 			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>6.6.11.Final</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.splunk.logging</groupId>

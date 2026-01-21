@@ -14,9 +14,10 @@ project structure:
 
 
 ** Próximas features:
+- add circuit breaker
+- add threads para buscar dados
 - deploy na aws
 - add prometheus e grafana
 - falar sobre cache
-- add threads para buscar dados
 - salvar no s3 e consultar via iceberg/glue
 

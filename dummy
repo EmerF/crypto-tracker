@@ -8,3 +8,4 @@ add to project:
         - integration tests
     - polimorfirsm using:
         inter
+run: mvn spring-boot:run
