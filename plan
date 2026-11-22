@@ -12,6 +12,20 @@ project structure:
 │       └── ci.yml
 │       └── cd.yml
 
+############## Circuit Breaker #####################
+1. Add a resilience library dependency in your pom.xml (use resilience4j\-spring\-boot3 for Spring Boot3).
+2. Enable the circuit breaker module in your configuration ( application.yml or application.properties ).
+
+3. Define a circuit breaker instance with thresholds (failure %, slow call limits, wait duration).
+4. Wrap the external API call in your service with the circuit breaker annotation or programmatic API.
+5. Provide a fallback method that returns a safe response when the breaker is open.
+6. Record only relevant exceptions as failures (e.g.5xx, timeouts) and ignore expected ones (e.g.4xx).
+7. Add metrics or logs to observe breaker state changes.
+8. Write tests to simulate failures and verify open\ / half-open\ / closed transitions.
+
+
+
+
 
 ** Próximas features:
 - add circuit breaker
